@@ -39,8 +39,20 @@ module "paas" {
 ## Terraform Module Inputs
 
 | Name | Description | Type | Default | Required |
-|------|-------------|:----:|:-----:|:-----:|
+|------|-------------|------|---------|:--------:|
+| availability\_zones | (required) List of availaibility zones for VPC subnets | `list(string)` | n/a | yes |
+| tgw\_name | (required) Name of the Transit Gateway | `string` | n/a | yes |
+| vpc\_cidrblocks | (required) List of VPC CIDR blocks, must be three | `list(string)` | n/a | yes |
 
+## Requirements
+
+No requirements.
+
+## Providers
+
+| Name | Version |
+|------|---------|
+| aws | n/a |
 
 [top](#top)
 
@@ -48,7 +60,23 @@ module "paas" {
 
 | Name | Description |
 |------|-------------|
-| alerting_topic_arn | The Amazon Resource Name (ARN) identifying the Alerting SNS Topic |
+| back\_rt\_id | Back VPC route table ID |
+| back\_vpc\_cidr | Back VPC CIDR block |
+| back\_vpc\_id | Back VPC ID |
+| back\_vpc\_subnet\_cidr\_blocks | Back VPC subnet CIDR blocks |
+| back\_vpc\_subnet\_ids | Back VPC subnet IDs |
+| front\_mid\_peering\_connection\_id | Front to mid VPC peering connection ID |
+| front\_rt\_id | Front VPC route table ID |
+| front\_vpc\_cidr | Front VPC CIDR block |
+| front\_vpc\_id | Front VPC ID |
+| front\_vpc\_subnet\_cidr\_blocks | Front VPC subnet CIDR blocks |
+| front\_vpc\_subnet\_ids | Front VPC subnet IDs |
+| mid\_back\_peering\_connection\_id | Mid to back VPC peering connection ID |
+| mid\_rt\_id | Mid VPC route table ID |
+| mid\_vpc\_cidr | Mid VPC CIDR block |
+| mid\_vpc\_id | Mid VPC ID |
+| mid\_vpc\_subnet\_cidr\_blocks | Mid VPC subnet CIDR blocks |
+| mid\_vpc\_subnet\_ids | Mid VPC subnet IDs |
 
 [top](#top)
 
