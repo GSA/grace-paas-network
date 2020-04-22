@@ -1,4 +1,4 @@
-# <a name="top">GRACE PaaS VPC</a>
+# <a name="top">GRACE PaaS VPC</a>[![CircleCI](https://circleci.com/gh/GSA/grace-paas-vpc.svg?style=svg)](https://circleci.com/gh/GSA/grace-paas-vpc)
 
 The GRACE PaaS VPC module creates the the network resources required for a basic GRACE PaaS account.
 
