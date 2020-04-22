@@ -40,8 +40,8 @@ module "paas" {
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| availability\_zones | (required) List of availaibility zones for VPC subnets | `list(string)` | n/a | yes |
-| tgw\_name | (required) Name of the Transit Gateway | `string` | n/a | yes |
+| availability\_zones | (required) List of availability zones for VPC subnets | `list(string)` | n/a | yes |
+| tgw\_name | (optional) Name of the Transit Gateway | `string` | `gsa-tgw-prod-v1` | no |
 | vpc\_cidrblocks | (required) List of VPC CIDR blocks, must be three | `list(string)` | n/a | yes |
 
 ## Requirements

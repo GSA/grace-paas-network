@@ -5,10 +5,11 @@ variable "vpc_cidrblocks" {
 
 variable "availability_zones" {
   type        = list(string)
-  description = "(required) List of availaibility zones for VPC subnets"
+  description = "(required) List of availability zones for VPC subnets"
 }
 
 variable "tgw_name" {
   type        = string
-  description = "(required) Name of the Transit Gateway"
+  description = "(optional) Name of the Transit Gateway"
+  default     = "gsa-tgw-prod-v1"
 }
