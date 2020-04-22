@@ -3,7 +3,7 @@ resource "aws_default_route_table" "front" {
 
   route {
     cidr_block         = "0.0.0.0/0"
-    transit_gateway_id = data.aws_ram_resource_share.tgw.id
+    transit_gateway_id = var.tgw_id
   }
 
   route {
@@ -18,7 +18,7 @@ resource "aws_default_route_table" "mid" {
 
   route {
     cidr_block         = "0.0.0.0/0"
-    transit_gateway_id = data.aws_ram_resource_share.tgw.id
+    transit_gateway_id = var.tgw_id
   }
 
   route {
@@ -38,7 +38,7 @@ resource "aws_default_route_table" "back" {
 
   route {
     cidr_block         = "0.0.0.0/0"
-    transit_gateway_id = data.aws_ram_resource_share.tgw.id
+    transit_gateway_id = var.tgw_id
   }
 
   route {

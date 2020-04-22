@@ -39,7 +39,7 @@ jobs:
 
 workflows:
   version: 2
-  test_and_apply:
+  validate_and_check:
     jobs:
       - validate_terraform
       - tfsec
