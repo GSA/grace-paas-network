@@ -1,5 +1,5 @@
-name: 'GSA/grace-alerting'
-description: 'GRACE Alerting provides basic CloudWatch Event Rules and Log Metric Filters that assist with the monitoring of an AWS environment.'
+name: "GSA/grace-paas-vpc"
+description: "The GRACE PaaS VPC module creates the the network resources required for a basic GRACE PaaS account."
 license: cc0-1.0
 openSourceProject: 1
 governmentWideReuseProject: 1
@@ -8,5 +8,6 @@ tags:
     - opensource
     - grace
     - devsecops
+    - grace-paas
 contact:
     email: grace-staff@gsa.gov
