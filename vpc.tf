@@ -1,6 +1,6 @@
 resource "aws_vpc" "self" {
-  for_each             = var.vpc_cidrblocks
-  cidr_block           = each.value
+  count                = length(var.vpc_cidrblocks)
+  cidr_block           = var.vpc_cidrblocks[count.index]
   enable_dns_hostnames = true
   enable_dns_support   = true
   instance_tenancy     = "default"
