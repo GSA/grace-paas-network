@@ -8,8 +8,8 @@ variable "availability_zones" {
   description = "(required) List of availability zones for VPC subnets"
 }
 
-variable "tgw_name" {
+variable "tgw_id" {
   type        = string
-  description = "(optional) Name of the Transit Gateway"
-  default     = "gsa-tgw-prod-v1"
+  description = "(optional) ID of the Transit Gateway"
+  default     = "tgw-0a5a3a1935972e4f0"
 }
