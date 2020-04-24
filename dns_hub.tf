@@ -75,11 +75,13 @@ resource "aws_route53_resolver_endpoint" "internal" {
   security_group_ids = [aws_security_group.dns[0].id]
 
   ip_address {
-    subnet_id = aws_subnet.self[0].id // frontend a-side
+    subnet_id = aws_subnet.self[0].id                      // frontend a-side
+    ip        = cidrhost(aws_subnet.self[0].cidr_block, 2) // a-side cidr .2
   }
 
   ip_address {
-    subnet_id = aws_subnet.self[1].id // frontend b-side
+    subnet_id = aws_subnet.self[1].id                      // frontend b-side
+    ip        = cidrhost(aws_subnet.self[1].cidr_block, 2) // b-side cidr .2
   }
 }
 
@@ -91,11 +93,13 @@ resource "aws_route53_resolver_endpoint" "external" {
   security_group_ids = [aws_security_group.dns[0].id]
 
   ip_address {
-    subnet_id = aws_subnet.self[0].id // frontend a-side
+    subnet_id = aws_subnet.self[0].id                      // frontend a-side
+    ip        = cidrhost(aws_subnet.self[0].cidr_block, 3) // a-side cidr .3
   }
 
   ip_address {
-    subnet_id = aws_subnet.self[1].id // frontend b-side
+    subnet_id = aws_subnet.self[1].id                      // frontend b-side
+    ip        = cidrhost(aws_subnet.self[1].cidr_block, 3) // a-side cidr .3
   }
 }
 
@@ -114,7 +118,11 @@ resource "aws_route53_resolver_rule" "forward_internal" {
   resolver_endpoint_id = aws_route53_resolver_endpoint.internal[0].id
 
   target_ip {
-    ip = aws_route53_resolver_endpoint.internal[0].ip_address
+    ip = cidrhost(aws_subnet.self[0].cidr_block, 2)
+  }
+
+  target_ip {
+    ip = cidrhost(aws_subnet.self[1].cidr_block, 2)
   }
 }
 
