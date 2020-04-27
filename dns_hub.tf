@@ -31,6 +31,12 @@ resource "aws_ram_resource_association" "external_rule" {
   resource_share_arn = aws_ram_resource_share.dns[0].arn
 }
 
+resource "aws_ram_resource_association" "internal_rule" {
+  count              = var.is_hub ? 1 : 0
+  resource_arn       = aws_route53_resolver_rule.forward_internal[0].arn
+  resource_share_arn = aws_ram_resource_share.dns[0].arn
+}
+
 resource "aws_security_group" "dns" {
   count       = var.is_hub ? 1 : 0
   name        = "dns"
@@ -112,10 +118,21 @@ resource "aws_route53_resolver_rule" "forward_external" {
   resolver_endpoint_id = aws_route53_resolver_endpoint.external[0].id
 
   target_ip {
-    ip = var.external_dns_server
+    ip = var._dns_server
   }
 }
 
+resource "aws_route53_resolver_rule" "forward_internal" {
+  count                = var.is_hub ? 1 : 0
+  domain_name          = var.internal_domain
+  name                 = "forward-inbound"
+  rule_type            = "FORWARD"
+  resolver_endpoint_id = aws_route53_resolver_endpoint.external[0].id
+
+  target_ip {
+    ip = aws_route53_resolver_endpoint.internal.ip_address
+  }
+}
 
 # Attach resolver rules to all VPCs in the hub
 
