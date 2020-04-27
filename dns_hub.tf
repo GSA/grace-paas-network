@@ -25,12 +25,6 @@ resource "aws_ram_resource_share" "dns" {
   allow_external_principals = false
 }
 
-resource "aws_ram_resource_association" "internal_rule" {
-  count              = var.is_hub ? 1 : 0
-  resource_arn       = aws_route53_resolver_rule.forward_internal[0].arn
-  resource_share_arn = aws_ram_resource_share.dns[0].arn
-}
-
 resource "aws_ram_resource_association" "external_rule" {
   count              = var.is_hub ? 1 : 0
   resource_arn       = aws_route53_resolver_rule.forward_external[0].arn
