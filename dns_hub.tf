@@ -110,22 +110,6 @@ resource "aws_route53_resolver_rule" "hub_local" {
   rule_type   = "SYSTEM"
 }
 
-resource "aws_route53_resolver_rule" "forward_internal" {
-  count                = var.is_hub ? 1 : 0
-  domain_name          = var.internal_domain
-  name                 = "forward-inbound"
-  rule_type            = "FORWARD"
-  resolver_endpoint_id = aws_route53_resolver_endpoint.internal[0].id
-
-  target_ip {
-    ip = cidrhost(aws_subnet.self[0].cidr_block, 4)
-  }
-
-  target_ip {
-    ip = cidrhost(aws_subnet.self[1].cidr_block, 5)
-  }
-}
-
 resource "aws_route53_resolver_rule" "forward_external" {
   count                = var.is_hub ? 1 : 0
   domain_name          = var.external_domain
@@ -144,12 +128,6 @@ resource "aws_route53_resolver_rule" "forward_external" {
 resource "aws_route53_resolver_rule_association" "hub_local" {
   count            = var.is_hub ? length(var.vpc_cidrblocks) : 0
   resolver_rule_id = aws_route53_resolver_rule.hub_local[0].id
-  vpc_id           = aws_vpc.self[count.index].id
-}
-
-resource "aws_route53_resolver_rule_association" "hub_internal" {
-  count            = var.is_hub ? length(var.vpc_cidrblocks) : 0
-  resolver_rule_id = aws_route53_resolver_rule.forward_internal[0].id
   vpc_id           = aws_vpc.self[count.index].id
 }
 
