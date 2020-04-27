@@ -118,7 +118,7 @@ resource "aws_route53_resolver_rule" "forward_external" {
   resolver_endpoint_id = aws_route53_resolver_endpoint.external[0].id
 
   target_ip {
-    ip = var._dns_server
+    ip = var.external_dns_server
   }
 }
 
@@ -130,7 +130,7 @@ resource "aws_route53_resolver_rule" "forward_internal" {
   resolver_endpoint_id = aws_route53_resolver_endpoint.external[0].id
 
   target_ip {
-    ip = aws_route53_resolver_endpoint.internal.ip_address
+    ip = aws_route53_resolver_endpoint.internal[0].ip_address
   }
 }
 
