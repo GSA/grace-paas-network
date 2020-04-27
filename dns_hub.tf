@@ -42,7 +42,7 @@ resource "aws_security_group" "dns" {
     from_port   = 53
     to_port     = 53
     protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
+    cidr_blocks = ["0.0.0.0/0"] #tfsec:ignore:AWS006
   }
 
   ingress {
@@ -57,7 +57,7 @@ resource "aws_security_group" "dns" {
     from_port   = 0
     to_port     = 0
     protocol    = "-1"
-    cidr_blocks = ["0.0.0.0/0"]
+    cidr_blocks = ["0.0.0.0/0"] #tfsec:ignore:AWS007
   }
 }
 
