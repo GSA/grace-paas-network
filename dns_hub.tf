@@ -130,7 +130,7 @@ resource "aws_route53_resolver_rule" "forward_internal" {
   resolver_endpoint_id = aws_route53_resolver_endpoint.external[0].id
 
   dynamic "target_ip" {
-    for_each = aws_route53_resolver_endpoint.internal[0].ip_address
+    for_each = aws_route53_resolver_endpoint.internal[0].ip_address.*.ip
 
     content {
       ip = target_ip.value
