@@ -8,3 +8,5 @@ data "aws_ec2_transit_gateway" "tgw" {
     values = ["enable"]
   }
 }
+
+data "aws_organizations_organization" "org" {}
