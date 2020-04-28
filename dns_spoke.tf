@@ -23,7 +23,7 @@ resource "aws_route53_zone" "spoke_internal" {
 }
 
 resource "aws_route53_resolver_rule" "spoke_local" {
-  count       = var.is_hub ? 1 : 0
+  count       = var.is_hub ? 0 : 1
   domain_name = local.project_domain
   name        = "resolve-local"
   rule_type   = "SYSTEM"
