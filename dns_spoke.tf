@@ -1,9 +1,4 @@
-# Look up the external resolver rule exposed by the hub
-data "aws_route53_resolver_rule" "dns_external" {
-  count       = var.is_hub ? 0 : 1
-  domain_name = var.external_domain
-  rule_type   = "FORWARD"
-}
+
 
 # Configure the zone for this spoke
 resource "aws_route53_zone" "spoke_internal" {
@@ -37,7 +32,14 @@ resource "aws_route53_resolver_rule" "spoke_local" {
 # associate external forwarding rule with all VPCs
 resource "aws_route53_resolver_rule_association" "spoke_external" {
   count            = var.is_hub ? 0 : length(var.vpc_cidrblocks)
-  resolver_rule_id = data.aws_route53_resolver_rule.dns_external[0].resolver_rule_id
+  resolver_rule_id = data.aws_route53_resolver_rule.external.resolver_rule_id
+  vpc_id           = aws_vpc.self[count.index].id
+}
+
+# associate internal forwarding rule with all VPCs
+resource "aws_route53_resolver_rule_association" "spoke_internal" {
+  count            = var.is_hub ? 0 : length(var.vpc_cidrblocks)
+  resolver_rule_id = data.aws_route53_resolver_rule.internal.resolver_rule_id
   vpc_id           = aws_vpc.self[count.index].id
 }
 

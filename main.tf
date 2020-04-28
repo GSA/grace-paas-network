@@ -10,3 +10,11 @@ data "aws_ec2_transit_gateway" "tgw" {
 }
 
 data "aws_organizations_organization" "org" {}
+
+data "aws_route53_resolver_rule" "internal" {
+  domain_name = "${var.internal_domain}"
+}
+
+data "aws_route53_resolver_rule" "external" {
+  domain_name = "${var.external_domain}"
+}
