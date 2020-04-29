@@ -13,6 +13,7 @@ data "aws_organizations_organization" "org" {}
 
 data "aws_route53_resolver_rule" "internal" {
   domain_name = "${var.internal_domain}"
+  rule_type   = "FORWARD"
 }
 
 data "aws_route53_resolver_rule" "external" {
