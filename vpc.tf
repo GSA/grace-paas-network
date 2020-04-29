@@ -9,11 +9,13 @@ resource "aws_vpc" "self" {
 resource "aws_vpc_peering_connection" "front_mid" {
   peer_vpc_id = aws_vpc.self[0].id
   vpc_id      = aws_vpc.self[1].id
+  auto_accept = true
 }
 
 resource "aws_vpc_peering_connection" "mid_back" {
   peer_vpc_id = aws_vpc.self[1].id
   vpc_id      = aws_vpc.self[2].id
+  auto_accept = true
 }
 
 resource "aws_ec2_transit_gateway_vpc_attachment" "tgw" {
