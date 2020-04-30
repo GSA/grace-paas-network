@@ -122,9 +122,10 @@ resource "aws_route53_resolver_rule" "forward_external" {
   name                 = "forward-outbound"
   rule_type            = "FORWARD"
   resolver_endpoint_id = aws_route53_resolver_endpoint.external[0].id
-
+ 
+ for each = var.external_dns_server
   target_ip {
-    ip = var.external_dns_server
+    ip = each.value
   }
 }
 

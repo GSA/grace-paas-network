@@ -19,8 +19,8 @@ variable "external_domain" {
 }
 
 variable "external_dns_server" {
-  type        = string
-  description = "(required) The IP Address of the external DNS server"
+  type        = list(string)
+  description = "(required) The IP addresses of the external DNS server"
 }
 
 variable "project_name" {
