@@ -18,4 +18,5 @@ data "aws_route53_resolver_rule" "internal" {
 
 data "aws_route53_resolver_rule" "external" {
   resolver_endpoint_id = aws_route53_resolver_endpoint.external[0].id
+  name                 = "forward-outbound"
 }
