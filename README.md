@@ -19,6 +19,7 @@ The GRACE PaaS VPC module creates the the network resources required for a basic
 - **subnet.tf** contains the subnets for the VPCs
 - **variables.tf** contains all configurable variables
 - **outputs.tf** contains all Terraform output variables
+- **elb.tf** contains the resource required to deploy ELB types, ALB and NLB.
 
 [top](#top)
 
