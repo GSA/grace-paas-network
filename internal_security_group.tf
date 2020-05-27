@@ -3,7 +3,7 @@ resource "aws_security_group" "nw_sec_sg" {
   count       = length(var.vpc_id)
   name        = "nw_sg-${count.index}"
   description = "GRACE Shared Network and Security Group"
-  vpc_id      = network.vpc_ids[count.index]
+  vpc_id      = vpc_ids[count.index]
 
   ingress {
     description = "dns"
@@ -34,8 +34,8 @@ resource "aws_security_group" "nw_sec_sg" {
 resource "aws_security_group" "shared_srvs_sg" {
   count       = length(var.vpc_id)
   name        = "shared_srvs_sg-${count.index}"
-  description = "Group designed for shared services"
-  vpc_id      = network.vpc_ids[count.index]
+  description = "GRACE Shared Services"
+  vpc_id      = vpc_ids[count.index]
 
   ingress {
     description = "RDP"

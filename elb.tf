@@ -2,7 +2,7 @@ resource "aws_lb" "app_waf_alb" {
   name     = "front-end-alb"
   internal = true
   security_groups = [
-    "sg-"
+    aws_security_group.nw_sec_sg[0].id
   ]
   subnets = [
     aws_subnet.self[0].name,
