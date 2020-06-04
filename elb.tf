@@ -1,6 +1,6 @@
 resource "aws_lb" "app_waf_alb" {
   name     = "front-end-alb"
-  internal = true
+  internal = var.internal
   security_groups = [
     aws_security_group.nw_sec_sg[0].id
   ]
@@ -9,7 +9,7 @@ resource "aws_lb" "app_waf_alb" {
     aws_subnet.self[1].name
   ]
   ip_address_type    = "ipv4"
-  load_balancer_type = "application"
+  load_balancer_type = var.load_balancer_type
 }
 
 resource "aws_lb_target_group" "waf_alb" {

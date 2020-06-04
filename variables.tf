@@ -19,3 +19,15 @@ variable "alb_cert_arn" {
   description = "(optional) ID of certificate in IAM role"
   default     = null
 }
+
+variable "load_balancer_type" {
+  description = "Type of load balancer to provision (network or application)."
+  type        = string
+  default     = "application"
+}
+
+variable "internal" {
+  description = "Provision an internal load balancer. Defaults to false."
+  type        = bool
+  default     = true
+}
