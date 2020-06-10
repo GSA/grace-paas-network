@@ -8,8 +8,34 @@ variable "availability_zones" {
   description = "(required) List of availability zones for VPC subnets"
 }
 
-variable "tgw_id" {
+variable "internal_domain" {
   type        = string
-  description = "(optional) ID of the Transit Gateway"
-  default     = "tgw-0a5a3a1935972e4f0"
+  description = "(required) The domain name used internally for AWS name resolution"
+}
+
+variable "external_domain" {
+  type        = string
+  description = "(required) The domain name used externally for name resolution"
+}
+
+variable "external_dns_server" {
+  type        = list(string)
+  description = "(required) The IP addresses of the external DNS server"
+}
+
+variable "project_name" {
+  type        = string
+  description = "(required) The project name to be used when creating the subdomain for the spoke"
+}
+
+variable "appenv" {
+  type        = string
+  description = "(optional) The application environment"
+  default     = "development"
+}
+
+variable "is_hub" {
+  type        = bool
+  description = "(optional) Indicates whether this account is the DNS Hub (default: false)"
+  default     = false
 }

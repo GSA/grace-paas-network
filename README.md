@@ -1,6 +1,6 @@
-# <a name="top">GRACE PaaS VPC</a>[![CircleCI](https://circleci.com/gh/GSA/grace-paas-vpc.svg?style=svg)](https://circleci.com/gh/GSA/grace-paas-vpc)
+# <a name="top">GRACE PaaS Network</a>[![CircleCI](https://circleci.com/gh/GSA/grace-paas-vpc.svg?style=svg)](https://circleci.com/gh/GSA/grace-paas-vpc)
 
-The GRACE PaaS VPC module creates the the network resources required for a basic GRACE PaaS account.
+The GRACE PaaS Network module creates the the network resources required for a basic GRACE PaaS account.
 
 ## Table of Contents
 
@@ -27,8 +27,8 @@ The GRACE PaaS VPC module creates the the network resources required for a basic
 Simply import grace-paas-vpc as a module into your Terraform for the destination AWS Environment.
 
 ```
-module "paas" {
-    source                    = "github.com/GSA/grace-paas-vpc?ref=v0.0.1"
+module "network" {
+    source                    = "github.com/GSA/grace-paas-network?ref=v0.0.1"
     cloudtrail_log_group_name = "<log_group_name>"
     recipient                 = "<email_address>"
 }
