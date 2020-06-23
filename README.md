@@ -1,4 +1,4 @@
-# <a name="top">GRACE PaaS VPC</a>[![CircleCI](https://circleci.com/gh/GSA/grace-paas-vpc.svg?style=svg)](https://circleci.com/gh/GSA/grace-paas-vpc)
+# <a name="top">GRACE PaaS VPC</a> [![CircleCI](https://circleci.com/gh/GSA/grace-paas-network.svg?style=svg&circle-token=d0bdc1c9e646280312a4a8254f7c8d4698c8729f)](https://circleci.com/gh/GSA/grace-paas-network)
 
 The GRACE PaaS VPC module creates the the network resources required for a basic GRACE PaaS account.
 
@@ -19,7 +19,7 @@ The GRACE PaaS VPC module creates the the network resources required for a basic
 - **subnet.tf** contains the subnets for the VPCs
 - **variables.tf** contains all configurable variables
 - **outputs.tf** contains all Terraform output variables
-- **internal_security_groups.tf** Contains GRACE standard Service Security Groups and Network Security Groups
+- **internal_security_groups.tf** contains GRACE standard Service Security Groups and Network Security Groups
 
 
 [top](#top)
