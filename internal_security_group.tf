@@ -25,7 +25,7 @@ resource "aws_security_group" "nw_sec_sg" {
     from_port   = 0
     to_port     = 0
     protocol    = "-1"
-    cidr_blocks = ["0.0.0.0/0"] #tfsec:ignore:AWS008
+    cidr_blocks = ["0.0.0.0/0"] #tfsec:ignore:AWS009
   }
 
   tags = {
@@ -63,7 +63,7 @@ resource "aws_security_group" "shared_srvs_sg" {
     from_port   = 0
     to_port     = 0
     protocol    = "-1"
-    cidr_blocks = ["0.0.0.0/0"] #tfsec:ignore:AWS008
+    cidr_blocks = ["0.0.0.0/0"] #tfsec:ignore:AWS009
   }
 
   tags = {
