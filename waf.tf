@@ -3,7 +3,7 @@ module "waf" {
   version = "0.1.0"
 
   name_prefix = "grace-app"
-  alb_arn     = aws_lb.app_waf_alb.elb_arn
+  alb_arn     = aws_lb.app_waf_alb.elb.arn
 
   enable_CommonRuleSet          = true
   enable_AdminProtectionRuleSet = true
