@@ -13,6 +13,11 @@ output "back_vpc_id" {
   description = "Back VPC ID"
 }
 
+output "vpc_ids" {
+  value       = [aws_vpc.self[0].id, aws_vpc.self[1].id, aws_vpc.self[2].id]
+  description = "VPC IDs for Front Mid and Back"
+}
+
 output "front_vpc_cidr" {
   value       = aws_vpc.self[0].cidr_block
   description = "Front VPC CIDR block"
