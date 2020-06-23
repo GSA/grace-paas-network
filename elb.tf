@@ -5,8 +5,8 @@ resource "aws_lb" "app_waf_alb" {
     aws_security_group.nw_sec_sg[0].id
   ]
   subnets = [
-    aws_subnet.self[0].name,
-    aws_subnet.self[1].name
+    aws_subnet.self[0],
+    aws_subnet.self[1]
   ]
   ip_address_type    = "ipv4"
   load_balancer_type = var.load_balancer_type
