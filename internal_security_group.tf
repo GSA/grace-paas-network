@@ -79,16 +79,18 @@ resource "aws_security_group_rule" "vra_rule01" {
   protocol          = "tcp"
   from_port         = "443"
   to_port           = "443"
+  description       = "VRA HTTPS Port Group"
 
 }
 
 resource "aws_security_group_rule" "vra_rule02" {
   count             = length(var.vpc_id)
   security_group_id = aws_security_group.shared_srvs_sg[count.index].id
-  cidr_blocks       = ["192.168.101.181/32"]
+  cidr_blocks       = ["192.168.101.128/26"]
   type              = "ingress"
   protocol          = "tcp"
   from_port         = "443"
   to_port           = "443"
+  description       = "VRA HTTPS Port Group"
 
 }
