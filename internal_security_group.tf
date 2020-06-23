@@ -32,6 +32,7 @@ resource "aws_security_group" "nw_sec_sg" {
     Name = "Network_Securty_SG-${count.index}"
   }
 
+
 }
 
 
