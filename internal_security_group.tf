@@ -1,9 +1,9 @@
 
 resource "aws_security_group" "nw_sec_sg" {
-  count       = length(var.vpc_ids)
+  count       = length(vpc_ids)
   name        = "nw_sg-${count.index}"
   description = "GRACE Shared Network and Security Group"
-  vpc_id      = var.vpc_ids[count.index]
+  vpc_id      = vpc_ids[count.index]
 
   ingress {
     description = "dns"
@@ -36,10 +36,10 @@ resource "aws_security_group" "nw_sec_sg" {
 
 
 resource "aws_security_group" "shared_srvs_sg" {
-  count       = length(var.vpc_id)
+  count       = length(vpc_ids)
   name        = "shared_srvs_sg-${count.index}"
   description = "GRACE Shared Services Security Group"
-  vpc_id      = var.vpc_ids[count.index]
+  vpc_id      = vpc_ids[count.index]
 
   ingress {
     description = "RDP"
@@ -72,7 +72,7 @@ resource "aws_security_group" "shared_srvs_sg" {
 }
 
 resource "aws_security_group_rule" "vra_rule01" {
-  count             = length(var.vpc_id)
+  count             = length(vpc_ids)
   security_group_id = aws_security_group.shared_srvs_sg[count.index].id
   cidr_blocks       = ["159.142.0.0/16"]
   type              = "ingress"
@@ -84,7 +84,7 @@ resource "aws_security_group_rule" "vra_rule01" {
 }
 
 resource "aws_security_group_rule" "vra_rule02" {
-  count             = length(var.vpc_id)
+  count             = length(vpc_ids)
   security_group_id = aws_security_group.shared_srvs_sg[count.index].id
   cidr_blocks       = ["192.168.101.128/26"]
   type              = "ingress"
