@@ -39,3 +39,21 @@ variable "is_hub" {
   description = "(optional) Indicates whether this account is the DNS Hub (default: false)"
   default     = false
 }
+
+variable "alb_cert_arn" {
+  type        = string
+  description = "(optional) ID of certificate in IAM role"
+  default     = null
+}
+
+variable "load_balancer_type" {
+  description = "Type of load balancer to provision (network or application)."
+  type        = string
+  default     = "application"
+}
+
+variable "internal" {
+  description = "Provision an internal load balancer. Defaults to false."
+  type        = bool
+  default     = true
+}

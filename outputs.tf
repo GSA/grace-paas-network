@@ -87,3 +87,13 @@ output "back_rt_id" {
   value       = aws_default_route_table.back.id
   description = "Back VPC route table ID"
 }
+
+output "nw_sg_ids" {
+  value       = aws_security_group.nw_sec_sg[*].id
+  description = "ouput all the new security gropus"
+}
+
+output "shared_srvs_sg_ids" {
+  value       = aws_security_group.shared_srvs_sg[*].id
+  description = "ouput all the new security gropus"
+}

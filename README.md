@@ -1,4 +1,4 @@
-# <a name="top">GRACE PaaS Network</a>[![CircleCI](https://circleci.com/gh/GSA/grace-paas-vpc.svg?style=svg)](https://circleci.com/gh/GSA/grace-paas-vpc)
+# <a name="top">GRACE PaaS Network</a> [![CircleCI](https://circleci.com/gh/GSA/grace-paas-network.svg?style=svg&circle-token=d0bdc1c9e646280312a4a8254f7c8d4698c8729f)](https://circleci.com/gh/GSA/grace-paas-network)
 
 The GRACE PaaS Network module creates the the network resources required for a basic GRACE PaaS account.
 
@@ -17,8 +17,12 @@ The GRACE PaaS Network module creates the the network resources required for a b
 - **vpc.tf** contains the resource for the Front, Mid, and Back VPCs, peering connections, and transit gateway connections
 - **route.tf** contains the route tables and route resources
 - **subnet.tf** contains the subnets for the VPCs
+- **dns_hub.tf** contains configuration details for DNS resolvers and shared forwarding rules
+- **dns_spoke.tf** contains the configuration details for customer side DNS setup
 - **variables.tf** contains all configurable variables
 - **outputs.tf** contains all Terraform output variables
+- **internal_security_groups.tf** contains GRACE standard Service Security Groups and Network Security Groups
+
 
 [top](#top)
 
@@ -77,6 +81,8 @@ No requirements.
 | mid\_vpc\_id | Mid VPC ID |
 | mid\_vpc\_subnet\_cidr\_blocks | Mid VPC subnet CIDR blocks |
 | mid\_vpc\_subnet\_ids | Mid VPC subnet IDs |
+| nw\_sg\_ids | Network Security Group ids |
+|shared\_srvs\_sg\_id | Shared Services Security Group ids |
 
 [top](#top)
 
