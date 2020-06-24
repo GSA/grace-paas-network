@@ -1,5 +1,5 @@
-name: "GSA/grace-paas-vpc"
-description: "The GRACE PaaS VPC module creates the the network resources required for a basic GRACE PaaS account."
+name: "GSA/grace-paas-network"
+description: "The GRACE PaaS Network module creates the the network resources required for a basic GRACE PaaS account."
 license: cc0-1.0
 openSourceProject: 1
 governmentWideReuseProject: 1
