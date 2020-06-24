@@ -109,12 +109,15 @@ resource "aws_route53_resolver_endpoint" "external" {
   }
 }
 
+# removes resolve self rule for the DNS HUB
+/* 
 resource "aws_route53_resolver_rule" "hub_local" {
   count       = var.is_hub ? 1 : 0
   domain_name = var.internal_domain
   name        = "resolve-self"
   rule_type   = "SYSTEM"
 }
+*/
 
 resource "aws_route53_resolver_rule" "forward_external" {
   count                = var.is_hub ? 1 : 0
@@ -150,11 +153,14 @@ resource "aws_route53_resolver_rule" "forward_internal" {
 
 # Attach resolver rules to all VPCs in the hub
 
+# Remove attachment of hub_local rule
+/*
 resource "aws_route53_resolver_rule_association" "hub_local" {
   count            = var.is_hub ? length(var.vpc_cidrblocks) : 0
   resolver_rule_id = aws_route53_resolver_rule.hub_local[0].id
   vpc_id           = aws_vpc.self[count.index].id
 }
+*/
 
 resource "aws_route53_resolver_rule_association" "hub_external" {
   count            = var.is_hub ? length(var.vpc_cidrblocks) : 0

@@ -57,3 +57,15 @@ variable "internal" {
   type        = bool
   default     = true
 }
+
+variable "mgmt_dev_account" {
+  description = "GRACE Management AWS account ID"
+  type        = string
+  default     = "671263857155"
+}
+
+variable "grace_dev_org_id" {
+  description = "GRACE Development AWS Org ID"
+  type        = string
+  default     = "o-xgfcwz3555"
+}
