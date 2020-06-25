@@ -26,9 +26,6 @@ linters-settings:
     local-prefixes: github.com/golangci/golangci-lint
   gocritic:
     enabled-tags:
-      - opinionated
-      - performance
-      - style
     disabled-checks:
   funlen:
     lines: 100
