@@ -58,12 +58,12 @@ variable "internal" {
   default     = true
 }
 
-variable "mgmt_dev_account" {
-  description = "GRACE Management AWS account ID"
+variable "hub_account_bus_arn" {
+  description = "Hub account event bus ARN"
   type        = string
 }
 
-variable "grace_dev_org_id" {
-  description = "GRACE Development AWS Org ID"
+variable "org_id" {
+  description = "GRACE AWS Org ID"
   type        = string
 }
