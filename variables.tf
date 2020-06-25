@@ -59,11 +59,11 @@ variable "internal" {
 }
 
 variable "hub_account_bus_arn" {
-  description = "GRACE Management AWS account ID"
+  description = "Hub account event bus ARN"
   type        = string
 }
 
 variable "org_id" {
-  description = "GRACE Development AWS Org ID"
+  description = "GRACE AWS Org ID"
   type        = string
 }
