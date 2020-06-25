@@ -67,3 +67,9 @@ variable "grace_dev_org_id" {
   description = "GRACE Development AWS Org ID"
   type        = string
 }
+
+variable "lambda_source_file" {
+  description = "(optional) Source file of Lambda function binary"
+  type        = string
+  default     = "../release/grace-paas-associate-zone.zip"
+}
