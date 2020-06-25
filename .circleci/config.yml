@@ -47,6 +47,19 @@ jobs:
       - run:
           name: Lint Handler
           command: make lint_handler
+  release_handler:
+    docker:
+      - image: circleci/golang:latest
+    working_directory: /go/src/github.com/GSA/grace-inventory
+    steps:
+      - checkout
+      - run:
+          name: Release handler
+          command: make release_handler
+      - persist_to_workspace:
+          root: .
+          paths:
+            - ./release/*
 
 workflows:
   version: 2
@@ -55,3 +68,9 @@ workflows:
       - validate_terraform
       - tfsec
       - lint_handler
+      - release_handler:
+          filters:
+            tags:
+              only: /^v.*/
+            branches:
+              only: master
