@@ -36,6 +36,17 @@ jobs:
       - run:
           name: Terraform static code analysis with tfsec
           command: tfsec
+  lint_handler:
+    environment:
+      AWS_DEFAULT_REGION: us-east-1
+    docker:
+      - image: circleci/golang:latest
+    working_directory: /go/src/github.com/GSA/grace-inventory
+    steps:
+      - checkout
+      - run:
+          name: Lint Handler
+          command: make lint_handler
 
 workflows:
   version: 2
@@ -43,3 +54,4 @@ workflows:
     jobs:
       - validate_terraform
       - tfsec
+      - lint_handler

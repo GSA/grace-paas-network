@@ -1,5 +1,6 @@
 locals {
   project_domain = "${var.project_name}.${var.internal_domain}"
+  lambda_name    = "grace-paas-associate-zone"
 }
 
 data "aws_ec2_transit_gateway" "tgw" {
