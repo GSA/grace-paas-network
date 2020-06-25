@@ -8,3 +8,11 @@ resource "aws_lambda_function" "associate" {
   source_code_hash = filesha256(var.lambda_source_file)
   runtime          = "go1.x"
 }
+
+resource "aws_lambda_permission" "event" {
+  statement_id  = "AllowExecutionFromCloudWatch"
+  action        = "lambda:InvokeFunction"
+  function_name = aws_lambda_function.associate.function_name
+  principal     = "events.amazonaws.com"
+  source_arn    = aws_cloudwatch_event_rule.zone_association.arn
+}
