@@ -26,7 +26,6 @@ linters-settings:
     local-prefixes: github.com/golangci/golangci-lint
   gocritic:
     enabled-tags:
-      - experimental
       - opinionated
       - performance
       - style
