@@ -46,5 +46,5 @@ resource "aws_cloudwatch_event_target" "lambda_trigger" {
   count     = var.is_hub ? 1 : 0
   rule      = aws_cloudwatch_event_rule.zone_association.name
   target_id = local.lambda_name
-  arn       = aws_lambda_function.associate.arn
+  arn       = aws_lambda_function.associate[0].arn
 }
