@@ -2,8 +2,10 @@ package main
 
 import (
 	"context"
+	"encoding/json"
 	"fmt"
 
+	"github.com/aws/aws-lambda-go/events"
 	"github.com/aws/aws-lambda-go/lambda"
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/aws/session"
@@ -20,7 +22,16 @@ type myEvent struct {
 	} `json:"requestParameters"`
 }
 
-func handler(ctx context.Context, event myEvent) {
+func handler(ctx context.Context, e events.CloudWatchEvent) {
+	fmt.Printf("Event: %v", e)
+
+	var event myEvent
+
+	err := json.Unmarshal(e.Detail, &event)
+	if err != nil {
+		fmt.Printf("error unmarshaling event: %v", err)
+	}
+
 	// Assoiciate VPC
 	sess, err := session.NewSession()
 	if err != nil {
