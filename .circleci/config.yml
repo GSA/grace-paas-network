@@ -41,7 +41,7 @@ jobs:
       AWS_DEFAULT_REGION: us-east-1
     docker:
       - image: circleci/golang:latest
-    working_directory: /go/src/github.com/GSA/grace-inventory
+    working_directory: /go/src/github.com/GSA/grace-paas-network
     steps:
       - checkout
       - run:
@@ -50,7 +50,7 @@ jobs:
   release_handler:
     docker:
       - image: circleci/golang:latest
-    working_directory: /go/src/github.com/GSA/grace-inventory
+    working_directory: /go/src/github.com/GSA/grace-paas-network
     steps:
       - checkout
       - run:
