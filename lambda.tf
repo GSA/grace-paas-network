@@ -10,6 +10,7 @@ resource "aws_lambda_function" "associate" {
 }
 
 resource "aws_lambda_permission" "event" {
+  count         = var.is_hub ? 1 : 0
   statement_id  = "AllowExecutionFromCloudWatch"
   action        = "lambda:InvokeFunction"
   function_name = aws_lambda_function.associate[0].function_name
