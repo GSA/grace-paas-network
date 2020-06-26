@@ -52,3 +52,43 @@ resource "aws_iam_role_policy_attachment" "lambda_role_policy_attachment" {
   role       = aws_iam_role.lambda_role[0].name
   policy_arn = aws_iam_policy.lambda_policy[0].arn
 }
+
+
+# policy document for spoke account events:PutEvents on hub account Event Bus
+data "aws_iam_policy_document" "put_events" {
+  statement {
+    effect = "Allow"
+    actions = [
+      "events:PutEvents"
+    ]
+    resources = [var.hub_account_bus_arn]
+  }
+}
+
+data "aws_iam_policy_document" "put_events_assume" {
+  statement {
+    effect = "Allow"
+    actions = [
+      "sts:AssumeRole"
+    ]
+    principals {
+      type        = "Service"
+      identifiers = ["events.amazonaws.com"]
+    }
+  }
+}
+
+# role for put-events
+resource "aws_iam_role" "put_events_role" {
+  count              = var.is_hub ? 0 : 1
+  name               = local.put_events
+  description        = "Role for GRACE PaaS spoke access to put events on hub side Event Bus"
+  assume_role_policy = data.aws_iam_policy_document.put_events_assume.json
+}
+
+resource "aws_iam_role_policy" "put_events_policy" {
+  count  = var.is_hub ? 0 : 1
+  name   = local.put_events
+  role   = aws_iam_role.put_events_role[0].id
+  policy = data.aws_iam_policy_document.put_events.json
+}
