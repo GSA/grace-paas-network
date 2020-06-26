@@ -73,3 +73,8 @@ variable "lambda_source_file" {
   type        = string
   default     = "../release/grace-paas-associate-zone.zip"
 }
+
+variable "hub_vpc_id" {
+  description = "Hub account VPC for Hosted Zone Association"
+  type        = string
+}

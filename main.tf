@@ -22,3 +22,6 @@ data "aws_route53_resolver_rule" "external" {
   count = var.is_hub ? 0 : 1
   name  = "forward-outbound"
 }
+
+data "aws_region" "current" {
+}

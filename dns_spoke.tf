@@ -22,6 +22,20 @@ resource "aws_route53_zone" "spoke_internal" {
   }
 }
 
+resource "null_resource" "create_remote_zone_auth" {
+  count = var.is_hub ? 0 : 1
+
+  triggers = {
+    zone_id = aws_route53_zone.spoke_internal[0].zone_id
+  }
+
+  provisioner "local-exec" {
+    command = "aws route53 create-vpc-association-authorization --hosted-zone-id ${aws_route53_zone.spoke_internal[0].zone_id} --vpc VPCRegion=${data.aws_region.current.name},VPCId=${var.hub_vpc_id}"
+  }
+
+  depends_on = [aws_route53_zone.spoke_internal[0]]
+}
+
 resource "aws_route53_resolver_rule" "spoke_local" {
   count       = var.is_hub ? 0 : 1
   domain_name = local.project_domain
