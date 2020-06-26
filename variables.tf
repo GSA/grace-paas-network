@@ -68,6 +68,12 @@ variable "org_id" {
   type        = string
 }
 
+variable "lambda_source_file" {
+  description = "(optional) Source file of Lambda function binary"
+  type        = string
+  default     = "../release/grace-paas-associate-zone.zip"
+}
+
 variable "hub_vpc_id" {
   description = "Hub account VPC for Hosted Zone Association"
   type        = string
