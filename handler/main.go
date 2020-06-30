@@ -23,19 +23,21 @@ type myEvent struct {
 }
 
 func handler(ctx context.Context, e events.CloudWatchEvent) {
-	fmt.Printf("Event: %v", e)
+	fmt.Printf("Event: %v\n", e)
 
 	var event myEvent
 
 	err := json.Unmarshal(e.Detail, &event)
 	if err != nil {
-		fmt.Printf("error unmarshaling event: %v", err)
+		fmt.Printf("error unmarshaling event: %v\n", err)
 	}
+
+	fmt.Printf("Details: %v", event)
 
 	// Assoiciate VPC
 	sess, err := session.NewSession()
 	if err != nil {
-		fmt.Printf("error creating session: %v", err)
+		fmt.Printf("error creating session: %v\n", err)
 		return
 	}
 
@@ -50,10 +52,10 @@ func handler(ctx context.Context, e events.CloudWatchEvent) {
 
 	resp, err := svc.AssociateVPCWithHostedZone(&input)
 	if err != nil {
-		fmt.Printf("error associating VPC with hosted zone: %v", err)
+		fmt.Printf("error associating VPC with hosted zone: %v\n", err)
 	}
 
-	fmt.Printf("Response: %v", resp)
+	fmt.Printf("Response: %v\n", resp)
 }
 
 func main() {
