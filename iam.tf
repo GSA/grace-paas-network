@@ -33,6 +33,7 @@ resource "aws_iam_policy" "lambda_policy" {
   "Statement": [
     {
       "Action": [
+        "ec2:DescribeVPCs",
         "route53:AssociateVPCWithHostedZone",
         "logs:CreateLogGroup",
         "logs:CreateLogStream",
