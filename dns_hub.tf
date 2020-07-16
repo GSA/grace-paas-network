@@ -62,7 +62,7 @@ resource "aws_security_group" "dns" {
     from_port   = 53
     to_port     = 53
     protocol    = "udp"
-    cidr_blocks = ["0.0.0.0/0"]
+    cidr_blocks = ["0.0.0.0/0"] #tfsec:ignore:AWS008
   }
 
   egress {
