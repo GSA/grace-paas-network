@@ -90,10 +90,20 @@ output "back_rt_id" {
 
 output "nw_sg_ids" {
   value       = aws_security_group.nw_sec_sg[*].id
-  description = "ouput all the new security gropus"
+  description = "ouput all the new security groups"
 }
 
 output "shared_srvs_sg_ids" {
   value       = aws_security_group.shared_srvs_sg[*].id
-  description = "ouput all the new security gropus"
+  description = "ouput all the new security groups"
+}
+
+output "zone_id" {
+  value       = local.zone_id
+  description = "output for the route53 zone id"
+}
+
+output "project_domain" {
+  value       = local.project_domain
+  description = "output for the domain for the project"
 }
