@@ -71,15 +71,3 @@ resource "aws_security_group" "shared_srvs_sg" {
   }
 
 }
-
-resource "aws_security_group_rule" "vra_rule01" {
-  count             = length(aws_vpc.self)
-  security_group_id = aws_security_group.shared_srvs_sg[count.index].id
-  cidr_blocks       = ["159.142.0.0/16", "192.168.101.128/26"]
-  type              = "ingress"
-  protocol          = "tcp"
-  from_port         = "443"
-  to_port           = "443"
-  description       = "VRA HTTPS Port Group"
-
-}
