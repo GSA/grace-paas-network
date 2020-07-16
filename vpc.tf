@@ -26,8 +26,8 @@ resource "aws_ec2_transit_gateway_vpc_attachment" "tgw" {
 }
 
 resource "aws_vpc_dhcp_options" "options" {
-  count               = length(var.vpc_cidrblocks)
-  domain_name         = local.project_domain
+  count       = length(var.vpc_cidrblocks)
+  domain_name = local.project_domain
   domain_name_servers = [
     cidrhost(aws_subnet.self[count.index * 2].cidr_block, 2),
     cidrhost(aws_subnet.self[(count.index * 2) + 1].cidr_block, 2)
