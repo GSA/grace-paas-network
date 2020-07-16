@@ -24,3 +24,18 @@ resource "aws_ec2_transit_gateway_vpc_attachment" "tgw" {
   transit_gateway_id = data.aws_ec2_transit_gateway.tgw.id
   vpc_id             = aws_vpc.self[count.index].id
 }
+
+resource "aws_vpc_dhcp_options" "options" {
+  count               = length(var.vpc_cidrblocks)
+  domain_name         = local.project_domain
+  domain_name_servers = [
+    cidrhost(aws_subnet.self[count.index * 2].cidr_block, 2),
+    cidrhost(aws_subnet.self[(count.index * 2) + 1].cidr_block, 2)
+  ]
+}
+
+resource "aws_vpc_dhcp_options_association" "options" {
+  count           = length(var.vpc_cidrblocks)
+  vpc_id          = aws_vpc.self[count.index].id
+  dhcp_options_id = aws_vpc_dhcp_options.options[count.index].id
+}
