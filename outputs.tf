@@ -107,3 +107,48 @@ output "project_domain" {
   value       = local.project_domain
   description = "output for the domain for the project"
 }
+
+output "frontend_subnet_az0" {
+  value       = aws_subnet.self[0].id
+  description = "Frontend subnet in first AZ"
+}
+
+output "frontend_subnet_az1" {
+  value       = aws_subnet.self[1].id
+  description = "Frontend subnet in second AZ"
+}
+
+output "frontend_sg_ids" {
+  value       = [aws_security_group.nw_sec_sg[0].id, aws_security_group.shared_srvs_sg[0].id]
+  description = "Frontend security group IDs"
+}
+
+output "middleware_subnet_az0" {
+  value       = aws_subnet.self[2].id
+  description = "Middleware subnet in first AZ"
+}
+
+output "middleware_subnet_az1" {
+  value       = aws_subnet.self[3].id
+  description = "Middleware subnet in second AZ"
+}
+
+output "middleware_sg_ids" {
+  value       = [aws_security_group.nw_sec_sg[1].id, aws_security_group.shared_srvs_sg[1].id]
+  description = "Middleware security group IDs"
+}
+
+output "backend_subnet_az0" {
+  value       = aws_subnet.self[4].id
+  description = "Middleware subnet in first AZ"
+}
+
+output "backend_subnet_az1" {
+  value       = aws_subnet.self[5].id
+  description = "Middleware subnet in second AZ"
+}
+
+output "backend_sg_ids" {
+  value       = [aws_security_group.nw_sec_sg[2].id, aws_security_group.shared_srvs_sg[2].id]
+  description = "Middleware security group IDs"
+}
