@@ -140,15 +140,15 @@ output "middleware_sg_ids" {
 
 output "backend_subnet_az0" {
   value       = aws_subnet.self[4].id
-  description = "Middleware subnet in first AZ"
+  description = "Backend subnet in first AZ"
 }
 
 output "backend_subnet_az1" {
   value       = aws_subnet.self[5].id
-  description = "Middleware subnet in second AZ"
+  description = "Backend subnet in second AZ"
 }
 
 output "backend_sg_ids" {
   value       = [aws_security_group.nw_sec_sg[2].id, aws_security_group.shared_srvs_sg[2].id]
-  description = "Middleware security group IDs"
+  description = "Backend security group IDs"
 }
