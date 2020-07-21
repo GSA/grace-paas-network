@@ -1,91 +1,91 @@
-output "front_vpc_id" {
+output "frontend_vpc_id" {
   value       = aws_vpc.self[0].id
-  description = "Front VPC ID"
+  description = "Frontend VPC ID"
 }
 
-output "mid_vpc_id" {
+output "middleware_vpc_id" {
   value       = aws_vpc.self[1].id
-  description = "Mid VPC ID"
+  description = "Middleware VPC ID"
 }
 
-output "back_vpc_id" {
+output "backend_vpc_id" {
   value       = aws_vpc.self[2].id
-  description = "Back VPC ID"
+  description = "Backend VPC ID"
 }
 
 output "vpc_ids" {
   value       = [aws_vpc.self[0].id, aws_vpc.self[1].id, aws_vpc.self[2].id]
-  description = "VPC IDs for Front Mid and Back"
+  description = "VPC IDs for Frontend Middleware and Backend"
 }
 
-output "front_vpc_cidr" {
+output "frontend_vpc_cidr" {
   value       = aws_vpc.self[0].cidr_block
-  description = "Front VPC CIDR block"
+  description = "Frontend VPC CIDR block"
 }
 
-output "mid_vpc_cidr" {
+output "middleware_vpc_cidr" {
   value       = aws_vpc.self[1].cidr_block
-  description = "Mid VPC CIDR block"
+  description = "Middleware VPC CIDR block"
 }
 
-output "back_vpc_cidr" {
+output "backend_vpc_cidr" {
   value       = aws_vpc.self[2].cidr_block
-  description = "Back VPC CIDR block"
+  description = "Backend VPC CIDR block"
 }
 
-output "front_vpc_subnet_cidr_blocks" {
+output "frontend_vpc_subnet_cidr_blocks" {
   value       = [aws_subnet.self[0].cidr_block, aws_subnet.self[1].cidr_block]
-  description = "Front VPC subnet CIDR blocks"
+  description = "Frontend VPC subnet CIDR blocks"
 }
 
-output "mid_vpc_subnet_cidr_blocks" {
+output "middleware_vpc_subnet_cidr_blocks" {
   value       = [aws_subnet.self[2].cidr_block, aws_subnet.self[3].cidr_block]
-  description = "Mid VPC subnet CIDR blocks"
+  description = "Middleware VPC subnet CIDR blocks"
 }
 
-output "back_vpc_subnet_cidr_blocks" {
+output "backend_vpc_subnet_cidr_blocks" {
   value       = [aws_subnet.self[4].cidr_block, aws_subnet.self[5].cidr_block]
-  description = "Back VPC subnet CIDR blocks"
+  description = "Backend VPC subnet CIDR blocks"
 }
 
-output "front_vpc_subnet_ids" {
+output "frontend_vpc_subnet_ids" {
   value       = [aws_subnet.self[0].id, aws_subnet.self[1].id]
-  description = "Front VPC subnet IDs"
+  description = "Frontend VPC subnet IDs"
 }
 
-output "mid_vpc_subnet_ids" {
+output "middleware_vpc_subnet_ids" {
   value       = [aws_subnet.self[2].id, aws_subnet.self[3].id]
-  description = "Mid VPC subnet IDs"
+  description = "Middleware VPC subnet IDs"
 }
 
-output "back_vpc_subnet_ids" {
+output "backend_vpc_subnet_ids" {
   value       = [aws_subnet.self[4].id, aws_subnet.self[5].id]
-  description = "Back VPC subnet IDs"
+  description = "Backend VPC subnet IDs"
 }
 
-output "front_mid_peering_connection_id" {
+output "frontend_middleware_peering_connection_id" {
   value       = aws_vpc_peering_connection.front_mid.id
-  description = "Front to mid VPC peering connection ID"
+  description = "Frontend to middleware VPC peering connection ID"
 }
 
-output "mid_back_peering_connection_id" {
+output "middleware_backend_peering_connection_id" {
   value       = aws_vpc_peering_connection.mid_back.id
-  description = "Mid to back VPC peering connection ID"
+  description = "Middleware to backend VPC peering connection ID"
 }
 
-output "front_rt_id" {
+output "frontend_rt_id" {
   value       = aws_default_route_table.front.id
-  description = "Front VPC route table ID"
+  description = "Frontend VPC route table ID"
 }
 
-output "mid_rt_id" {
+output "middleware_rt_id" {
   value       = aws_default_route_table.mid.id
-  description = "Mid VPC route table ID"
+  description = "Middleware VPC route table ID"
 }
 
-output "back_rt_id" {
+output "backend_rt_id" {
   value       = aws_default_route_table.back.id
-  description = "Back VPC route table ID"
+  description = "Backend VPC route table ID"
 }
 
 output "nw_sg_ids" {
