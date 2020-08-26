@@ -1,6 +1,7 @@
 locals {
   // if we're the hub then we're using internal_domain, otherwise prepend the customer project name
-  project_domain = var.is_hub ? var.internal_domain : "${var.project_name}.${var.internal_domain}"
+  env_id         = var.appenv == "production" ? "" : "-" + substr(var.appenv, 0, 1)
+  project_domain = var.is_hub ? var.internal_domain : "${var.project_name}${local.env_id}.${var.internal_domain}"
   lambda_name    = "grace-paas-associate-zone"
   put_events     = "put-events"
   zone_id        = var.is_hub ? aws_route53_zone.hub_internal[0].id : aws_route53_zone.spoke_internal[0].id
