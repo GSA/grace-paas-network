@@ -1,6 +1,6 @@
 locals {
   // if we're the hub then we're using internal_domain, otherwise prepend the customer project name
-  env_id         = var.appenv == "production" ? "" : "-" + substr(var.appenv, 0, 1)
+  env_id         = var.appenv == "production" ? "" : "-${substr(var.appenv, 0, 1)}"
   project_domain = var.is_hub ? var.internal_domain : "${var.project_name}${local.env_id}.${var.internal_domain}"
   lambda_name    = "grace-paas-associate-zone"
   put_events     = "put-events"
