@@ -78,3 +78,9 @@ variable "hub_vpc_id" {
   description = "Hub account VPC for Hosted Zone Association"
   type        = string
 }
+
+variable "flow_log_destination" {
+  type        = string
+  description = "(required) The destination s3 bucket arn and folder prefix used for VPC flow log delivery"
+}
+
