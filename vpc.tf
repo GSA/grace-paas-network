@@ -39,3 +39,11 @@ resource "aws_vpc_dhcp_options_association" "options" {
   vpc_id          = aws_vpc.self[count.index].id
   dhcp_options_id = aws_vpc_dhcp_options.options[count.index].id
 }
+
+resource "aws_flow_log" "flow" {
+  count                = length(var.vpc_cidrblocks)
+  log_destination      = var.flow_log_destination
+  log_destination_type = "s3"
+  traffic_type         = "ALL"
+  vpc_id               = aws_vpc.self[count.index].id
+}
