@@ -25,7 +25,7 @@ else ifeq ($(strip $(CIRCLE_TAG)),)
 	@echo "CIRCLE_TAG must be set"
 	@exit 0
 else
-	ghr -u $(CIRCLE_PROJECT_USERNAME) -r $(CIRCLE_PROJECT_REPONAME) -c $(CIRCLE_SHA1) -delete $(CIRCLE_TAG) $(RELEASEDIR)
+	ghr -u $(CIRCLE_PROJECT_USERNAME) -r $(CIRCLE_PROJECT_REPONAME) -c $(CIRCLE_SHA1) -n $(CIRCLE_TAG) -delete $(CIRCLE_TAG) $(RELEASEDIR)
 endif
 
 clean: precommit
