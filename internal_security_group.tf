@@ -42,21 +42,16 @@ resource "aws_security_group" "shared_srvs_sg" {
   description = "GRACE Shared Services Security Group"
   vpc_id      = aws_vpc.self[count.index].id
 
-  ingress {
-    description = "RDP"
-    from_port   = 3389
-    to_port     = 3389
-    protocol    = "tcp"
+  dynamic "ingress" {
+    for_each = var.ingress_rules
 
-    cidr_blocks = ["0.0.0.0/0"] #tfsec:ignore:AWS008
-  }
-
-  ingress {
-    description = "ssh"
-    from_port   = 22
-    to_port     = 22
-    protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"] #tfsec:ignore:AWS008
+    content {
+      description = ingress.value["description"]
+      from_port = ingress.value["from_port"]
+      to_port = ingress.value["to_port"]
+      cidr_blocks = ingress.value["cidr_blocks"]
+      protocol = ingress.value["protocol"]
+    }
   }
 
   egress {
