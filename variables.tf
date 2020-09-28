@@ -6,14 +6,14 @@ variable "ingress_rules" {
       protocol:"tcp",
       from_port: 3389,
       to_port: 3389,
-      cidr_blocks: ["0.0.0.0/0"],
+      cidr_blocks: "0.0.0.0/0",
     },
     {
       description:"SSH",
       protocol:"tcp",
       from_port: 22,
       to_port: 22,
-      cidr_blocks: ["0.0.0.0/0"],
+      cidr_blocks: "0.0.0.0/0",
     }
   ]
 }
