@@ -1,5 +1,5 @@
 variable "ingress_rules" {
-  type = list(map(any))
+  type = list(object({ description = string, protocol = string, from_port = number, to_port = number, cidr_blocks = list(string) }))
   default = [
     {
       description : "RDP",
