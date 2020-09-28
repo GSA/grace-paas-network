@@ -88,11 +88,6 @@ output "backend_rt_id" {
   description = "Backend VPC route table ID"
 }
 
-output "nw_sg_ids" {
-  value       = aws_security_group.nw_sec_sg[*].id
-  description = "ouput all the new security groups"
-}
-
 output "shared_srvs_sg_ids" {
   value       = aws_security_group.shared_srvs_sg[*].id
   description = "ouput all the new security groups"
@@ -119,7 +114,7 @@ output "frontend_subnet_az1" {
 }
 
 output "frontend_sg_ids" {
-  value       = [aws_security_group.nw_sec_sg[0].id, aws_security_group.shared_srvs_sg[0].id]
+  value       = [aws_security_group.shared_srvs_sg[0].id]
   description = "Frontend security group IDs"
 }
 
@@ -134,7 +129,7 @@ output "middleware_subnet_az1" {
 }
 
 output "middleware_sg_ids" {
-  value       = [aws_security_group.nw_sec_sg[1].id, aws_security_group.shared_srvs_sg[1].id]
+  value       = [aws_security_group.shared_srvs_sg[1].id]
   description = "Middleware security group IDs"
 }
 
@@ -149,6 +144,6 @@ output "backend_subnet_az1" {
 }
 
 output "backend_sg_ids" {
-  value       = [aws_security_group.nw_sec_sg[2].id, aws_security_group.shared_srvs_sg[2].id]
+  value       = [aws_security_group.shared_srvs_sg[2].id]
   description = "Backend security group IDs"
 }

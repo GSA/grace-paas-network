@@ -82,7 +82,6 @@ No requirements.
 | mid\_vpc\_id | Mid VPC ID |
 | mid\_vpc\_subnet\_cidr\_blocks | Mid VPC subnet CIDR blocks |
 | mid\_vpc\_subnet\_ids | Mid VPC subnet IDs |
-| nw\_sg\_ids | Network Security Group ids |
 |shared\_srvs\_sg\_id | Shared Services Security Group ids |
 
 [top](#top)
