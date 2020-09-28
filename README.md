@@ -47,6 +47,7 @@ module "network" {
 | availability\_zones | (required) List of availability zones for VPC subnets | `list(string)` | n/a | yes |
 | tgw\_name | (optional) Name of the Transit Gateway | `string` | `gsa-tgw-prod-v1` | no |
 | vpc\_cidrblocks | (required) List of VPC CIDR blocks, must be three | `list(string)` | n/a | yes |
+| ingress_rules | (optional) List of ingress rules for shared services security group | `list(map(string))` | n/a | no |
 
 ## Requirements
 
@@ -81,7 +82,6 @@ No requirements.
 | mid\_vpc\_id | Mid VPC ID |
 | mid\_vpc\_subnet\_cidr\_blocks | Mid VPC subnet CIDR blocks |
 | mid\_vpc\_subnet\_ids | Mid VPC subnet IDs |
-| nw\_sg\_ids | Network Security Group ids |
 |shared\_srvs\_sg\_id | Shared Services Security Group ids |
 
 [top](#top)

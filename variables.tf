@@ -1,3 +1,23 @@
+variable "ingress_rules" {
+  type = list(object({ description = string, protocol = string, from_port = number, to_port = number, cidr_blocks = list(string) }))
+  default = [
+    {
+      description : "RDP",
+      protocol : "tcp",
+      from_port : 3389,
+      to_port : 3389,
+      cidr_blocks : ["0.0.0.0/0"],
+    },
+    {
+      description : "SSH",
+      protocol : "tcp",
+      from_port : 22,
+      to_port : 22,
+      cidr_blocks : ["0.0.0.0/0"],
+    }
+  ]
+}
+
 variable "vpc_cidrblocks" {
   type        = list(string)
   description = "(required) List of VPC CIDR blocks, must be three"
