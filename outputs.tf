@@ -14,7 +14,10 @@ output "backend_vpc_id" {
 }
 
 output "vpc_ids" {
-  value       = [aws_vpc.self[0].id, aws_vpc.self[1].id, aws_vpc.self[2].id]
+  value = [
+    aws_vpc.self[0].id,
+    aws_vpc.self[1].id,
+  aws_vpc.self[2].id]
   description = "VPC IDs for Frontend Middleware and Backend"
 }
 
@@ -34,32 +37,44 @@ output "backend_vpc_cidr" {
 }
 
 output "frontend_vpc_subnet_cidr_blocks" {
-  value       = [aws_subnet.self[0].cidr_block, aws_subnet.self[1].cidr_block]
+  value = [
+    aws_subnet.self[0].cidr_block,
+  aws_subnet.self[1].cidr_block]
   description = "Frontend VPC subnet CIDR blocks"
 }
 
 output "middleware_vpc_subnet_cidr_blocks" {
-  value       = [aws_subnet.self[2].cidr_block, aws_subnet.self[3].cidr_block]
+  value = [
+    aws_subnet.self[2].cidr_block,
+  aws_subnet.self[3].cidr_block]
   description = "Middleware VPC subnet CIDR blocks"
 }
 
 output "backend_vpc_subnet_cidr_blocks" {
-  value       = [aws_subnet.self[4].cidr_block, aws_subnet.self[5].cidr_block]
+  value = [
+    aws_subnet.self[4].cidr_block,
+  aws_subnet.self[5].cidr_block]
   description = "Backend VPC subnet CIDR blocks"
 }
 
 output "frontend_vpc_subnet_ids" {
-  value       = [aws_subnet.self[0].id, aws_subnet.self[1].id]
+  value = [
+    aws_subnet.self[0].id,
+  aws_subnet.self[1].id]
   description = "Frontend VPC subnet IDs"
 }
 
 output "middleware_vpc_subnet_ids" {
-  value       = [aws_subnet.self[2].id, aws_subnet.self[3].id]
+  value = [
+    aws_subnet.self[2].id,
+  aws_subnet.self[3].id]
   description = "Middleware VPC subnet IDs"
 }
 
 output "backend_vpc_subnet_ids" {
-  value       = [aws_subnet.self[4].id, aws_subnet.self[5].id]
+  value = [
+    aws_subnet.self[4].id,
+  aws_subnet.self[5].id]
   description = "Backend VPC subnet IDs"
 }
 
@@ -114,7 +129,8 @@ output "frontend_subnet_az1" {
 }
 
 output "frontend_sg_ids" {
-  value       = [aws_security_group.shared_srvs_sg[0].id]
+  value = [
+  aws_security_group.shared_srvs_sg[0].id]
   description = "Frontend security group IDs"
 }
 
@@ -129,7 +145,8 @@ output "middleware_subnet_az1" {
 }
 
 output "middleware_sg_ids" {
-  value       = [aws_security_group.shared_srvs_sg[1].id]
+  value = [
+  aws_security_group.shared_srvs_sg[1].id]
   description = "Middleware security group IDs"
 }
 
@@ -144,6 +161,7 @@ output "backend_subnet_az1" {
 }
 
 output "backend_sg_ids" {
-  value       = [aws_security_group.shared_srvs_sg[2].id]
+  value = [
+  aws_security_group.shared_srvs_sg[2].id]
   description = "Backend security group IDs"
 }
