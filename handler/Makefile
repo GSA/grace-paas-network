@@ -50,7 +50,7 @@ endif
 dependencies: precommit $(GOLANGCILINT) $(GOSEC) $(GHR)
 
 $(GOLANGCILINT):
-	go get -u github.com/golangci/golangci-lint/cmd/golangci-lint@v1.22.2
+	go get -u github.com/golangci/golangci-lint/cmd/golangci-lint
 
 $(GOSEC):
 	go get -u github.com/securego/gosec/cmd/gosec
