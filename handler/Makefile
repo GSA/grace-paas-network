@@ -39,8 +39,8 @@ integration_test: test
 
 lint: go.mod dependencies
 	go mod tidy
-	golangci-lint run ./...
-	gosec ./...
+	./bin/golangci-lint run ./...
+	./bin/gosec ./...
 
 go.mod:
 ifeq (,$(wildcard go.mod))
@@ -50,10 +50,10 @@ endif
 dependencies: precommit $(GOLANGCILINT) $(GOSEC) $(GHR)
 
 $(GOLANGCILINT):
-	go get -u github.com/golangci/golangci-lint/cmd/golangci-lint
+	curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s v1.41.1
 
 $(GOSEC):
-	go get -u github.com/securego/gosec/cmd/gosec
+	curl -sfL https://raw.githubusercontent.com/securego/gosec/master/install.sh | sh -s v2.8.1
 
 $(GHR):
 	go get -u github.com/tcnksm/ghr
