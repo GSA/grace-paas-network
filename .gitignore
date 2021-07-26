@@ -23,7 +23,6 @@ release/
 grace-paas-associate-zone
 integration/integration
 handler/handler
-handler/bin/*
 
 # IntelliJ’s project specific settings files/directory (Goland)
 .idea
